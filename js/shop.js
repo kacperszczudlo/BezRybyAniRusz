@@ -1,7 +1,7 @@
 // shop.js
 async function fetchProducts() {
   try {
-    const response = await fetch('products.json');
+    const response = await fetch('../json/products.json');
     if (!response.ok) throw new Error('Błąd podczas pobierania produktów');
     return await response.json();
   } catch (error) {
@@ -24,7 +24,7 @@ async function displayProducts() {
   const categories = [
     { id: 'wedki-grid', name: 'Wędki' },
     { id: 'przynety-grid', name: 'Przynęty' },
-    { id: 'zylki-grid', name: 'Żyłki' },
+    { id: 'plecionki-grid', name: 'Plecionki' },
     { id: 'siedzenia-grid', name: 'Siedzenia' },
     { id: 'podbieraki-grid', name: 'Podbieraki' },
     { id: 'kolowrotki-grid', name: 'Kołowrotki' },
@@ -48,8 +48,10 @@ async function displayProducts() {
     categoryProducts.forEach(product => {
       const productItem = document.createElement('div');
       productItem.classList.add('product-item');
+      productItem.setAttribute('role', 'button');
+      productItem.setAttribute('tabindex', '0');
       productItem.innerHTML = `
-        <img src="${product.image || 'https://via.placeholder.com/300x200?text=Brak+zdjęcia'}" alt="${product.title}">
+        <img src="${product.image || '../images/shop/placeholder.png'}" alt="${product.title}">
         <p class="product-name">${product.title}</p>
         <p class="product-price">Cena: ${product.price.toFixed(2)} PLN</p>
         <button class="add-to-cart-button" data-product-id="${product.id}">Dodaj do koszyka</button>
@@ -57,8 +59,17 @@ async function displayProducts() {
       grid.appendChild(productItem);
 
       const button = productItem.querySelector('.add-to-cart-button');
-      button.addEventListener('click', () => {
+      button.addEventListener('click', (event) => {
+        event.stopPropagation();
         window.toggleCart(product.id, product.title, product.price, button);
+      });
+
+      productItem.addEventListener('click', () => openDescriptionModal(product));
+      productItem.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          openDescriptionModal(product);
+        }
       });
     });
 
@@ -68,4 +79,36 @@ async function displayProducts() {
   if (loader) loader.style.display = 'none';
 }
 
-document.addEventListener('DOMContentLoaded', displayProducts);
+function openDescriptionModal(product) {
+  const detailsModal = document.getElementById('productDetailsModal');
+  const titleElement = document.getElementById('productDetailsTitle');
+  const descriptionElement = document.getElementById('productDetailsDescription');
+
+  if (!detailsModal || !titleElement || !descriptionElement) return;
+
+  titleElement.textContent = product.title;
+  descriptionElement.textContent = product.description || 'Brak opisu produktu.';
+  detailsModal.style.display = 'block';
+}
+
+function setupDetailsModal() {
+  const detailsModal = document.getElementById('productDetailsModal');
+  const closeBtn = document.getElementById('productDetailsClose');
+
+  if (!detailsModal || !closeBtn) return;
+
+  closeBtn.addEventListener('click', () => {
+    detailsModal.style.display = 'none';
+  });
+
+  window.addEventListener('click', (event) => {
+    if (event.target === detailsModal) {
+      detailsModal.style.display = 'none';
+    }
+  });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  setupDetailsModal();
+  displayProducts();
+});

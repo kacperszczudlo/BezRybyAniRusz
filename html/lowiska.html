@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bez Ryby Ani Rusz - Łowiska</title>
-  <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="menu.css">
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/menu.css">
   <link rel="icon" type="image/jpeg" href="images/icon.png" sizes="any" class="favicon">
   <style>
     .favicon {
@@ -18,12 +18,12 @@
   </style>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBk917fRIFg03UUE0BghFKPpvnSFxiYqh4&callback=initMap" async defer></script>
 </head>
-<body style="cursor: url('images/worm.png') 8 8, auto;">
+<body style="cursor: url('../images/worm.png') 8 8, auto;">
   <!-- Nowoczesne menu -->
   <nav class="navbar">
     <div class="logo">
       <a href="index.html">
-        <img src="images/icon.png" alt="Logo" style="width: 40px; height: 40px; vertical-align: middle; margin-right: 10px;">
+        <img src="../images/icon.png" alt="Logo" style="width: 40px; height: 40px; vertical-align: middle; margin-right: 10px;">
         Bez Ryby Ani Rusz
       </a>
     </div>
@@ -35,9 +35,9 @@
       <li><a href="sklep.html">Sklep</a></li>
     </ul>
     <div class="icons">
-      <img src="images/user.png" alt="Login" id="loginIcon" style="border-radius: 50%;">
+      <img src="../images/user.png" alt="Login" id="loginIcon" style="border-radius: 50%;">
       <a href="#" id="cartBtn" class="cart-link">
-        <img src="images/shopping-cart.png" alt="Koszyk" class="cart-img">
+        <img src="../images/shopping-cart.png" alt="Koszyk" class="cart-img">
         <span id="cart-count" class="cart-count">0</span>
       </a>
     </div>
@@ -64,7 +64,7 @@
       <span class="forgot-password"><a href="#">Nie pamiętasz hasła?</a></span>
     </div>
   </div>
-  <script src="script.js"></script>
+  <script src="../js/script.js"></script>
 
   <!-- Modal for Registration -->
   <div id="registerModal" class="modal">
@@ -142,20 +142,20 @@
   <footer class="footer" style="position: relative;">
     <p>Bez Ryby Ani Rusz - projekt zaliczeniowy z Projektowanie Interfejsów Użytkownika</p>
     <div class="social-media">
-      <a href="https://www.google.com" target="_blank"><img src="images/google.png" alt="Google"></a>
-      <a href="https://www.facebook.com" target="_blank"><img src="images/facebook.png" alt="Facebook"></a>
-      <a href="https://www.instagram.com" target="_blank"><img src="images/instagram.png" alt="Instagram"></a>
+      <a href="https://www.google.com" target="_blank"><img src="../images/google.png" alt="Google"></a>
+      <a href="https://www.facebook.com" target="_blank"><img src="../images/facebook.png" alt="Facebook"></a>
+      <a href="https://www.instagram.com" target="_blank"><img src="../images/instagram.png" alt="Instagram"></a>
     </div>
     <p>© 2025 Bez Ryby Ani Rusz. Wszystkie prawa zastrzeżone.</p>
   </footer>
 
   <!-- Rybka podążająca za kursorem -->
-  <img id="fish" src="images/fish.png" alt="Rybka" />
+  <img id="fish" src="../images/fish.png" alt="Rybka" />
 
   <!-- Skrypty -->
-  <script src="script.js"></script>
-  <script src="cart.js"></script>
-  <script src="lowiska.js"></script>
+  <script src="../js/script.js"></script>
+  <script src="../js/cart.js"></script>
+  <script src="../js/lowiska.js"></script>
   <script>
     window.addEventListener('load', () => {
       if (typeof initMap === 'function') {

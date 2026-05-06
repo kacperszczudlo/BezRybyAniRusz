@@ -329,10 +329,10 @@ document.addEventListener('DOMContentLoaded', () => {
     function updateUserInterface() {
       const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
       if (isLoggedIn) {
-        loginIcon.src = 'images/user-logged-in.png';
+        loginIcon.src = '../images/user-logged-in.png';
         loginIcon.alt = 'Wyloguj';
       } else {
-        loginIcon.src = 'images/user.png';
+        loginIcon.src = '../images/user.png';
         loginIcon.alt = 'Login';
       }
     }

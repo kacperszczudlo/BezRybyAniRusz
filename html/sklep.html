@@ -4,9 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bez Ryby Ani Rusz</title>
-  <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="menu.css">
-  <link rel="icon" type="image/jpeg" href="images/icon.png" sizes="any" class="favicon">
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/menu.css">
+  <link rel="icon" type="image/jpeg" href="../images/icon.png" sizes="any" class="favicon">
   <style>
     .favicon {
       border-radius: 50%;
@@ -70,14 +70,14 @@
     }
   </style>
   <!-- Dołączamy script.js i cart.js w head, ale shop.js na końcu body -->
-  <script src="script.js"></script>
-  <script src="cart.js"></script>
+  <script src="../js/script.js"></script>
+  <script src="../js/cart.js"></script>
 </head>
-<body style="cursor: url('images/worm.png') 8 8, auto;">
+<body style="cursor: url('../images/worm.png') 8 8, auto;">
   <nav class="navbar">
     <div class="logo">
       <a href="index.html">
-        <img src="images/icon.png" alt="Logo" style="width: 40px; height: 40px; vertical-align: middle; margin-right: 10px;">
+        <img src="../images/icon.png" alt="Logo" style="width: 40px; height: 40px; vertical-align: middle; margin-right: 10px;">
         Bez Ryby Ani Rusz
       </a>
     </div>
@@ -89,9 +89,9 @@
       <li><a href="sklep.html" class="active">Sklep</a></li>
     </ul>
     <div class="icons">
-      <img src="images/user.png" alt="Login" id="loginIcon" style="border-radius: 50%;">
+      <img src="../images/user.png" alt="Login" id="loginIcon" style="border-radius: 50%;">
       <a href="#" id="cartBtn" class="cart-link">
-        <img src="images/shopping-cart.png" alt="Koszyk" class="cart-img">
+        <img src="../images/shopping-cart.png" alt="Koszyk" class="cart-img">
         <span id="cart-count" class="cart-count">0</span>
       </a>
     </div>
@@ -107,7 +107,7 @@
       <ul>
         <li><a href="#wedki">Wędki</a></li>
         <li><a href="#przynety">Przynęty</a></li>
-        <li><a href="#zylki">Żyłki</a></li>
+        <li><a href="#plecionki">Plecionki</a></li>
         <li><a href="#siedzenia">Siedzenia</a></li>
         <li><a href="#podbieraki">Podbieraki</a></li>
         <li><a href="#kolowrotki">Kołowrotki</a></li>
@@ -128,9 +128,9 @@
       <div class="product-grid" id="przynety-grid"></div>
     </section>
 
-    <section class="zylki" id="zylki">
-      <h3 class="category-header">Żyłki</h3>
-      <div class="product-grid" id="zylki-grid"></div>
+    <section class="plecionki" id="plecionki">
+      <h3 class="category-header">Plecionki</h3>
+      <div class="product-grid" id="plecionki-grid"></div>
     </section>
 
     <section class="siedzenia" id="siedzenia">
@@ -212,20 +212,30 @@
     </div>
   </div>
 
+  <div id="productDetailsModal" class="modal">
+    <div class="modal-content">
+      <span class="close" id="productDetailsClose">×</span>
+      <div class="modal-header" id="productDetailsTitle">Opis produktu</div>
+      <div class="modal-body">
+        <p id="productDetailsDescription" style="white-space: pre-line;"></p>
+      </div>
+    </div>
+  </div>
+
   <footer class="footer" style="position: relative;">
     <p>Bez Ryby Ani Rusz - projekt zaliczeniowy z Projektowanie Interfejsów Użytkownika</p>
     <div class="social-media">
-      <a href="https://www.google.com" target="_blank"><img src="images/google.png" alt="Google"></a>
-      <a href="https://www.facebook.com" target="_blank"><img src="images/facebook.png" alt="Facebook"></a>
-      <a href="https://www.instagram.com" target="_blank"><img src="images/instagram.png" alt="Instagram"></a>
+      <a href="https://www.google.com" target="_blank"><img src="../images/google.png" alt="Google"></a>
+      <a href="https://www.facebook.com" target="_blank"><img src="../images/facebook.png" alt="Facebook"></a>
+      <a href="https://www.instagram.com" target="_blank"><img src="../images/instagram.png" alt="Instagram"></a>
     </div>
     <p>© 2025 Bez Ryby Ani Rusz. Wszystkie prawa zastrzeżone.</p>
   </footer>
 
-  <img id="fish" src="images/fish.png" alt="Rybka" />
+  <img id="fish" src="../images/fish.png" alt="Rybka" />
 
   <!-- Dołączamy shop.js na końcu body, aby upewnić się, że DOM jest załadowany -->
-  <script src="shop.js"></script>
+  <script src="../js/shop.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const shopMenuLinks = document.querySelectorAll('.shop-menu ul li a');

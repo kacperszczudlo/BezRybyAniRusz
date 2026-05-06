@@ -1,7 +1,7 @@
 // home.js
 async function fetchProducts() {
   try {
-    const response = await fetch('products.json');
+    const response = await fetch('../json/products.json');
     if (!response.ok) throw new Error('Błąd pobierania produktów');
     return await response.json();
   } catch (error) {
@@ -16,7 +16,7 @@ async function displayFeaturedProducts() {
   if (!track || products.length === 0) return;
 
   const categories = [
-    'Wędki', 'Przynęty', 'Żyłki', 'Siedzenia', 'Podbieraki',
+    'Wędki', 'Przynęty', 'Plecionki', 'Siedzenia', 'Podbieraki',
     'Kołowrotki', 'Haczyki', 'Spławiki', 'Odzież wędkarska', 'Siatki na ryby'
   ];
 

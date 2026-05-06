@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', function () {
           <button class="increase-btn" data-product-id="${item.id}">+</button>
           <span class="price">${(item.price * (item.quantity || 1)).toFixed(2)} PLN</span>
           <button class="remove-item" data-product-id="${item.id}">
-            <img src="images/trash.png" alt="Usuń" class="trash-icon">
+            <img src="../images/trash.png" alt="Usuń" class="trash-icon">
           </button>
         </div>
       `;

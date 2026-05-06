@@ -22,7 +22,7 @@ function initMap() {
 
     console.log('Map initialized successfully.');
 
-    fetch('fishingLocations.json')
+    fetch('../json/fishingLocations.json')
         .then(response => response.json())
         .then(fishingLocations => {
             window.fishingLocations = fishingLocations;

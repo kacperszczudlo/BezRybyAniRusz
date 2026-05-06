@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>Bez Ryby Ani Rusz</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/menu.css">
+  <link rel="icon" type="image/jpeg" href="images/icon.png" sizes="any" class="favicon">
+  <script src="../js/script.js"></script>
+  <script src="../js/cart.js"></script>
+  <style>
+    .favicon {
+      border-radius: 50%;
+    }
+    .logo a {
+      text-decoration: none;
+      color: inherit;
+    }
+    .featured-products {
+      padding: 40px 20px;
+      text-align: center;
+      position: relative;
+    }
+    .featured-products h2 {
+      color: #007BFF;
+      margin-bottom: 30px;
+    }
+    .scroll-container {
+      width: 100%;
+      max-width: 960px;
+      margin: 0 auto;
+      overflow: hidden;
+      position: relative;
+    }
+    .scroll-track {
+      display: flex;
+      width: max-content;
+      transition: transform 0.3s ease;
+    }
+    .scroll-item {
+      width: 300px;
+      height: auto;
+      padding: 15px;
+      box-sizing: border-box;
+      margin-right: 20px;
+      background-color: #f9f9f9;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      flex-shrink: 0;
+    }
+    .scroll-item img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 5px;
+    }
+    .scroll-item p, .scroll-item button {
+      margin: 10px 0;
+      text-align: center;
+    }
+    .scroll-button {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(0, 123, 255, 0.8);
+      color: #fff;
+      border: none;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      font-size: 20px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background-color 0.3s ease, opacity 0.3s ease;
+      z-index: 10;
+    }
+    .scroll-button:hover {
+      background-color: rgba(0, 123, 255, 1);
+    }
+    .scroll-button.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+    #scroll-left {
+      left: 10px;
+    }
+    #scroll-right {
+      right: 10px;
+    }
+    @media (max-width: 1000px) {
+      .scroll-container {
+        max-width: 640px;
+      }
+      #scroll-left { left: 5px; }
+      #scroll-right { right: 5px; }
+    }
+    @media (max-width: 700px) {
+      .scroll-container {
+        max-width: 320px;
+      }
+      .scroll-button {
+        width: 30px;
+        height: 30px;
+        font-size: 16px;
+      }
+    }
+    .hero {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background: url('../images/under_water.jpg') no-repeat center center/cover;
+      color: #fff;
+      margin: 0;
+    }
+    /* Nowa sekcja opinii */
+    .customer-reviews {
+      padding: 40px 20px;
+      text-align: center;
+      background-color: #f5f5f5;
+    }
+    .customer-reviews h2 {
+      color: #007BFF;
+      margin-bottom: 30px;
+    }
+    .reviews-container {
+      max-width: 960px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    .review {
+      display: flex;
+      align-items: center;
+      padding: 15px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    .review img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      margin-right: 15px;
+    }
+    .review p {
+      margin: 0;
+      font-size: 0.9rem;
+      color: #666;
+      text-align: left;
+    }
+    .review p strong {
+      color: #007BFF;
+    }
+    @media (max-width: 700px) {
+      .review {
+        flex-direction: column;
+        align-items: flex-start;
+        text-align: left;
+      }
+      .review img {
+        margin-bottom: 10px;
+        margin-right: 0;
+      }
+    }
+    @media (max-width: 1023px) {
+      #fish {
+        display: none; /* Hide the fish cursor on mobile and tablet */
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo">
+      <a href="index.html">
+        <img src="../images/icon.png" alt="Logo" style="width: 40px; height: 40px; vertical-align: middle; margin-right: 10px;">
+        Bez Ryby Ani Rusz
+      </a>
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">Strona Główna</a></li>
+      <li><a href="ryby.html">Ryby</a></li>
+      <li><a href="metody.html">Metody</a></li>
+      <li><a href="lowiska.html">Łowiska</a></li>
+      <li><a href="sklep.html">Sklep</a></li>
+    </ul>
+    <div class="icons">
+      <img src="../images/user.png" alt="Login" id="loginIcon" style="border-radius: 50%;">
+      <a href="#" id="cartBtn" class="cart-link">
+        <img src="../images/shopping-cart.png" alt="Koszyk" class="cart-img">
+        <span id="cart-count" class="cart-count">0</span>
+      </a>
+    </div>
+    <div class="hamburger">
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+    </div>
+  </nav>
+
+  <main>
+    <section class="hero">
+      <h1>Witaj na Bez Ryby Ani Rusz!</h1>
+      <p>Twoje miejsce dla pasjonatów wędkarstwa – znajdziesz tu wszystko, czego potrzebujesz, aby złowić rybę swojego życia.</p>
+    </section>
+
+    <section class="featured-products">
+      <h2>Polecane Produkty</h2>
+      <div class="scroll-container">
+        <button class="scroll-button" id="scroll-left">←</button>
+        <div class="scroll-track" id="scroll-track">
+          <!-- Produkty będą ładowane dynamicznie przez JavaScript -->
+        </div>
+        <button class="scroll-button" id="scroll-right">→</button>
+      </div>
+    </section>
+
+    <!-- Nowa sekcja opinii -->
+    <section class="customer-reviews">
+      <h2>Opinie Klientów</h2>
+      <div class="reviews-container" id="reviews-container"></div>
+    </section>
+  </main>
+
+  <div id="loginModal" class="modal">
+    <div class="modal-content">
+      <span class="close">×</span>
+      <div class="modal-header">Logowanie</div>
+      <div class="modal-body">
+        <input type="text" placeholder="Nazwa użytkownika" required>
+        <input type="password" placeholder="Hasło" required>
+      </div>
+      <div class="modal-footer">
+        <button class="login-btn" onclick="signIn()">Zaloguj się</button>
+        <button class="register-btn">Zarejestruj się</button>
+      </div>
+      <span class="forgot-password"><a href="#">Nie pamiętasz hasła?</a></span>
+    </div>
+  </div>
+
+  <div id="registerModal" class="modal">
+    <div class="modal-content">
+      <span class="close">×</span>
+      <div class="modal-header">Rejestracja</div>
+      <div class="modal-body">
+        <input type="text" placeholder="Nazwa użytkownika" required>
+        <input type="email" placeholder="Email" required>
+        <input type="password" placeholder="Hasło" required>
+        <input type="password" placeholder="Powtórz hasło" required>
+      </div>
+      <div class="modal-footer">
+        <button class="cancel-btn">Anuluj</button>
+        <button class="register-btn" onclick="register()">Zarejestruj się</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="cartModal" class="modal">
+    <div class="cart-modal-content">
+      <span class="close">×</span>
+      <h2>Koszyk</h2>
+      <ul id="cartItems"></ul>
+      <div class="cart-summary"></div>
+      <button id="checkoutBtn">Do kasy</button>
+    </div>
+  </div>
+
+  <footer class="footer" style="position: relative;">
+    <p>Bez Ryby Ani Rusz - projekt zaliczeniowy z Projektowanie Interfejsów Użytkownika</p>
+    <div class="social-media">
+      <a href="https://www.google.com" target="_blank"><img src="../images/google.png" alt="Google"></a>
+      <a href="https://www.facebook.com" target="_blank"><img src="../images/facebook.png" alt="Facebook"></a>
+      <a href="https://www.instagram.com" target="_blank"><img src="../images/instagram.png" alt="Instagram"></a>
+    </div>
+    <p>© 2025 Bez Ryby Ani Rusz. Wszystkie prawa zastrzeżone.</p>
+  </footer>
+
+  <img id="fish" src="../images/fish.png" alt="Rybka" />
+  <script src="../js/home.js"></script>
+</body>
+</html>
